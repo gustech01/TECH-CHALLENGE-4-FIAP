@@ -4,8 +4,7 @@ def show():
  left, cent, right = st.columns(3)
  with right:
    st.image('imagens/fiap.png')
-
-
+  
 st.title('Sobre o Negócio')
 st.markdown(
     '''

@@ -14,7 +14,7 @@ if menu == "Home":
     sobreoprojeto.show()
 
 elif menu == "Sobre o Negócio":
-    sobreoprojeto.show()
+    sobreonegocio.show()
 
 elif menu == "Sobre o Projeto":
     sobreoprojeto.show()

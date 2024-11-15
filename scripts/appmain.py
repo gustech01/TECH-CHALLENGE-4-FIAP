@@ -1,7 +1,8 @@
+import sobreoprojeto  # Certifique-se de que `sobreoprojeto.py` está no mesmo diretório
+import sobreonegocio
+import home
 import streamlit as st
-#import sobreoprojeto  # Certifique-se de que `sobreoprojeto.py` está no mesmo diretório
-#import sobreonegocio
-#import home
+
 # Menu lateral
 st.sidebar.title("Menu")
 menu = st.sidebar.radio("Selecione uma página:", ["Home", "Sobre o Negócio", "Sobre o Projeto"])
@@ -14,10 +15,11 @@ if menu == "Home":
         st.error("Erro ao carregar a página 'Home'. Verifique se a função `show()` está definida no arquivo `home.py`.")
 
 elif menu == "Sobre o Negócio":
-     try:
+    try:
         sobreonegocio.show()
-     except AttributeError:
+    except AttributeError:
         st.error("Erro ao carregar a página 'Sobre o Negócio'. Verifique se a função `show()` está definida no arquivo `sobreonegocio.py`.")
+
 
 
 

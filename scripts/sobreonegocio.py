@@ -1,7 +1,7 @@
 import streamlit as st
 
 def show():
-left, cent, right = st.columns(3)
+ left, cent, right = st.columns(3)
 
 
 st.title('O negócio')

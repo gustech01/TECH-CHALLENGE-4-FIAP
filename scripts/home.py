@@ -5,10 +5,10 @@ def show():
  left, cent, right = st.columns(3)
  with right:
   
- st.image('imagens/fiap.png')
+  st.image('imagens/fiap.png')
     
- st.title('Objetivo do Projeto')
- st.markdown(
+st.title('Objetivo do Projeto')
+st.markdown(
     '''
         <div style="text-align: justify;">
             <p>

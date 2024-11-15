@@ -47,23 +47,7 @@ def show():
                     </li>
                 </ul>
             </p>
-            <p>
-                Após a análise e preparação de dados, os modelos Prophet e Statsforecast foram avaliados, sendo o AutoARIMA 
-                (da biblioteca Statsforecast) selecionado por apresentar melhor desempenho.
-            </p>
-            <p>
-                O projeto resultou em duas aplicações:
-                <ul>
-                    <li>Um MVP no Streamlit com dashboard para série histórica e previsão semanal;</li>
-                    <li>
-                        Um <b><a style='text-decoration:none', href='https://app.powerbi.com/view?r=eyJrIjoiYjcxNGZlNmYtMDI4OS00NmJiLTk3Y2EtMWMyZWEyZWJmMTA4IiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9'>dashboard interativo no Power BI</a></b>, que consome dados processados por um script Python de web scraping.
-                    </li>
-                </ul>
-            </p>
-            <p>
-                O script realiza consultas semanais no site do IPEA, exportando dados para um banco PostgreSQL (usado no Power BI) 
-                e arquivos CSV consumidos pelo MVP Streamlit no repositório GitHub.
-            </p>
+           
         </div>
         ''',
         unsafe_allow_html=True

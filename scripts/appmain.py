@@ -17,4 +17,11 @@ elif menu == "Sobre o Projeto":
     import sobreoprojeto
     sobreoprojeto.show()
 
+@st.cache
+def get_data():
+    return {"key": "dados carregados"}  # Simulando carregamento de dados
+
+# Apenas chamar a função em cada página
+data = get_data()
+st.write(data)
 

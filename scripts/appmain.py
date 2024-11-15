@@ -1,9 +1,4 @@
-# Certifique-se de que `sobreoprojeto.py`, `home.py`, e `sobreonegocio.py` estão no mesmo diretório
 import streamlit as st
-import home
-import sobreonegocio
-import sobreoprojeto
-
 
 # Menu lateral
 st.sidebar.title("Menu")
@@ -11,13 +6,15 @@ menu = st.sidebar.radio("Selecione uma página:", ["Home", "Sobre o Negócio", "
 
 # Exibição das páginas
 if menu == "Home":
-    sobreoprojeto.show()
+    import home
+    home.show()
 
 elif menu == "Sobre o Negócio":
+    import sobreonegocio
     sobreonegocio.show()
 
 elif menu == "Sobre o Projeto":
+    import sobreoprojeto
     sobreoprojeto.show()
-
 
 

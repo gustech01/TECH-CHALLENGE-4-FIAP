@@ -4,7 +4,7 @@ def show():
  left, cent, right = st.columns(3)
 
 
-st.title('O negócio')
+st.title('Sobre o Negócio')
 st.markdown(
     '''
         <div style="text-align: justify;">

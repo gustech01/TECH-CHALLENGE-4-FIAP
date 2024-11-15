@@ -1,6 +1,5 @@
 # Certifique-se de que `sobreoprojeto.py`, `home.py`, e `sobreonegocio.py` estão no mesmo diretório
 import streamlit as st
-from streamlit_option_menu import option_menu
 import home
 import sobreonegocio
 import sobreoprojeto

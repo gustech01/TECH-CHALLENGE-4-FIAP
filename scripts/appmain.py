@@ -1,7 +1,7 @@
 import streamlit as st
-import sobreoprojeto  # Certifique-se de que `sobreoprojeto.py` está no mesmo diretório
-import sobreonegocio
-import home
+#import sobreoprojeto  # Certifique-se de que `sobreoprojeto.py` está no mesmo diretório
+#import sobreonegocio
+#import home
 # Menu lateral
 st.sidebar.title("Menu")
 menu = st.sidebar.radio("Selecione uma página:", ["Home", "Sobre o Negócio", "Sobre o Projeto"])

@@ -1,12 +1,12 @@
 import streamlit as st
 
 def show():
-
+ 
  left, cent, right = st.columns(3)
  with right:
    st.image('imagens/fiap.png')
     
-st.title('O projeto')
+st.title('Objetivo do Projeto')
 st.markdown(
     '''
         <div style="text-align: justify;">

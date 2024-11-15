@@ -8,10 +8,7 @@ def show():
 
     # Título do projeto
     st.title('Sobre o projeto')
-    # Substitua 'img/oil_barrel.png' pelo caminho da imagem se necessário
-    # st.image('img/oil_barrel.png', width=100)
-
-    # Descrição do projeto e metodologia CRISP-DM
+  
     st.markdown(
         '''
         <div style="text-align: justify;">
@@ -31,12 +28,7 @@ def show():
         unsafe_allow_html=True
     )
 
-    # Imagem central com legenda
-    left, cent, right = st.columns(3)
-    with cent:
-        # Substitua 'img/CRISP_DM.png' pelo caminho da imagem se necessário
-        # st.image('img/CRISP_DM.png', caption='Fluxo da metodologia CRISP-DM')
-        pass
+   
 
     # Informações sobre os dados e implementação
     st.markdown(
@@ -77,6 +69,4 @@ def show():
         unsafe_allow_html=True
     )
 
-    # Imagem da arquitetura do projeto
-    # Substitua 'img/arquitetura.png' pelo caminho da imagem se necessário
-    # st.image('img/arquitetura.png', caption='Arquitetura do projeto')
+   

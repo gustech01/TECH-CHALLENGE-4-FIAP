@@ -5,8 +5,8 @@ import sobreonegocio
 import sobreoprojeto
 
 # Menu lateral com a página "Home" selecionada como padrão
-st.sidebar.title("Menu")
-menu = st.sidebar.radio(
+st.slide.sidebar.title("Menu")
+menu = st.slide.sidebar.radio(
     "Selecione uma página:", 
     ["Home", "Sobre o Negócio", "Sobre o Projeto"], 
     index=0  # Define "Home" como padrão (índice 0)

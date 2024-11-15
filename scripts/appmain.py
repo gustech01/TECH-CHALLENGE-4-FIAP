@@ -1,20 +1,25 @@
 import streamlit as st
 
+# Inicialize variáveis no session_state
+if "current_page" not in st.session_state:
+    st.session_state.current_page = "Home"
+
 # Menu lateral
 st.sidebar.title("Menu")
 menu = st.sidebar.radio("Selecione uma página:", ["Home", "Sobre o Negócio", "Sobre o Projeto"])
 
+# Atualize o estado da página atual
+st.session_state.current_page = menu
+
 # Exibição das páginas
-if menu == "Home":
+if st.session_state.current_page == "Home":
     import home
     home.show()
 
-elif menu == "Sobre o Negócio":
+elif st.session_state.current_page == "Sobre o Negócio":
     import sobreonegocio
     sobreonegocio.show()
 
-elif menu == "Sobre o Projeto":
+elif st.session_state.current_page == "Sobre o Projeto":
     import sobreoprojeto
     sobreoprojeto.show()
-
-

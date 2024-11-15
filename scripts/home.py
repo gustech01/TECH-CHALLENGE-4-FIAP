@@ -4,7 +4,7 @@ import streamlit as st
 
 left, cent, right = st.columns(3)
 with right:
-   st.image('C:\Users\Gustavo\OneDrive\Documentos\MVP\LOGO.png')
+   st.image('imagens/fiap.png')
     
 st.title('O projeto')
 st.markdown(

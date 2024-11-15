@@ -1,23 +1,26 @@
 # Certifique-se de que `sobreoprojeto.py`, `home.py`, e `sobreonegocio.py` estão no mesmo diretório
 import streamlit as st
+from streamlit_option_menu import option_menu
 import home
 import sobreonegocio
 import sobreoprojeto
 
-# Menu lateral com a página "Home" selecionada como padrão
-st.slide.sidebar.title("Menu")
-menu = st.slide.sidebar.radio(
-    "Selecione uma página:", 
-    ["Home", "Sobre o Negócio", "Sobre o Projeto"], 
-    index=0  # Define "Home" como padrão (índice 0)
-)
 
-# Exibição das páginas
-if menu == "Home":
-    home.show()
+with st.sidebar:
 
-elif menu == "Sobre o Negócio":
-    sobreonegocio.show()
+    selected = option_menu(
+        menu_title = "Menu",
+        options=["Home","Sobre o Negócio", "Sobre o Projeto"],
+    )
 
-elif menu == "Sobre o Projeto":
-    sobreoprojeto.show()
+
+if selected == "Home":
+   st.title(f"{selected}")
+
+if selected == "Sobre o Negócio":
+   st.title(f"{selected}")
+
+if selected == "Sobre o Projeto":
+   st.title(f"{selected}")
+
+

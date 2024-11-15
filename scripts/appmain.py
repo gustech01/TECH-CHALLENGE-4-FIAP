@@ -1,5 +1,4 @@
   # Certifique-se de que `sobreoprojeto.py` está no mesmo diretório
-
 import home
 import sobreonegocio
 import sobreoprojeto

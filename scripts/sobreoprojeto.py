@@ -4,8 +4,7 @@ def show():
     # Layout inicial com imagem no canto direito
     left, cent, right = st.columns(3)
     with right:
-        # Substitua 'img/fiap.png' pelo caminho da imagem se necessário
-        pass
+     st.image('imagens/fiap.png')
 
     # Título do projeto
     st.title('Sobre o projeto')

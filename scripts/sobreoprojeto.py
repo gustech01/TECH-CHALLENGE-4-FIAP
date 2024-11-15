@@ -2,7 +2,7 @@ import streamlit as st
 
 def show():
 # Layout inicial com imagem no canto direito
-left, cent, right = st.columns(3)
+ left, cent, right = st.columns(3)
 with right:
    ### st.image('img/fiap.png')
 
@@ -31,12 +31,13 @@ st.markdown(
 )
 
 # Imagem central com legenda
-left, cent, right = st.columns(3)
+ left, cent, right = st.columns(3)
 with cent:
     ##st.image('img/CRISP_DM.png', caption='Fluxo da metodologia CRISP-DM')
 
 # Informações sobre os dados e implementação
- st.markdown(
+   
+   st.markdown(
     '''
         <div style="text-align: justify;">
             <p>

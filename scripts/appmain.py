@@ -6,21 +6,23 @@ import sobreonegocio
 import sobreoprojeto
 
 
-with st.sidebar:
+# Menu lateral com a página "Home" selecionada como padrão
+st.slide.sidebar.title("Menu")
+menu = st.slide.sidebar.radio(
+    "Selecione uma página:", 
+    ["Home", "Sobre o Negócio", "Sobre o Projeto"], 
+    index=0  # Define "Home" como padrão (índice 0)
+)
 
-    selected = option_menu(
-        menu_title = "Menu",
-        options=["Home","Sobre o Negócio", "Sobre o Projeto"],
-    )
+# Exibição das páginas
+if menu == "Home":
+    home.show()
 
+elif menu == "Sobre o Negócio":
+    sobreonegocio.show()
 
-if selected == "Home":
-   st.title(f"{selected}")
+elif menu == "Sobre o Projeto":
+    sobreoprojeto.show()
 
-if selected == "Sobre o Negócio":
-   st.title(f"{selected}")
-
-if selected == "Sobre o Projeto":
-   st.title(f"{selected}")
 
 

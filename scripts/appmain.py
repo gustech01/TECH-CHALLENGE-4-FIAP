@@ -1,6 +1,8 @@
-import sobreoprojeto  # Certifique-se de que `sobreoprojeto.py` está no mesmo diretório
-import sobreonegocio
+  # Certifique-se de que `sobreoprojeto.py` está no mesmo diretório
+
 import home
+import sobreonegocio
+import sobreoprojeto
 import streamlit as st
 
 # Menu lateral

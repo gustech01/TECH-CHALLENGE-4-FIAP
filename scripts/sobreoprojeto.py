@@ -1,18 +1,20 @@
 import streamlit as st
 
 def show():
-# Layout inicial com imagem no canto direito
- left, cent, right = st.columns(3)
-with right:
-   ### st.image('img/fiap.png')
+    # Layout inicial com imagem no canto direito
+    left, cent, right = st.columns(3)
+    with right:
+        # Substitua 'img/fiap.png' pelo caminho da imagem se necessário
+        pass
 
-# Título do projeto
- st.title('Sobre o projeto')
-##st.image('img/oil_barrel.png', width=100)
+    # Título do projeto
+    st.title('Sobre o projeto')
+    # Substitua 'img/oil_barrel.png' pelo caminho da imagem se necessário
+    # st.image('img/oil_barrel.png', width=100)
 
-# Descrição do projeto e metodologia CRISP-DM
-st.markdown(
-    '''
+    # Descrição do projeto e metodologia CRISP-DM
+    st.markdown(
+        '''
         <div style="text-align: justify;">
             <p>
                 Este projeto utiliza a metodologia CRISP-DM (CRoss Industry Standard Process for Data Mining), amplamente aplicada em projetos de dados. A metodologia segue 6 etapas principais:
@@ -26,19 +28,20 @@ st.markdown(
                 </ul>
             </p>
         </div>
-    ''',
-    unsafe_allow_html=True
-)
+        ''',
+        unsafe_allow_html=True
+    )
 
-# Imagem central com legenda
- left, cent, right = st.columns(3)
-with cent:
-    ##st.image('img/CRISP_DM.png', caption='Fluxo da metodologia CRISP-DM')
+    # Imagem central com legenda
+    left, cent, right = st.columns(3)
+    with cent:
+        # Substitua 'img/CRISP_DM.png' pelo caminho da imagem se necessário
+        # st.image('img/CRISP_DM.png', caption='Fluxo da metodologia CRISP-DM')
+        pass
 
-# Informações sobre os dados e implementação
-   
-   st.markdown(
-    '''
+    # Informações sobre os dados e implementação
+    st.markdown(
+        '''
         <div style="text-align: justify;">
             <p>
                 Os dados foram obtidos do site do IPEA (Instituto de Pesquisa Econômica Aplicada), incluindo:
@@ -71,9 +74,10 @@ with cent:
                 e arquivos CSV consumidos pelo MVP Streamlit no repositório GitHub.
             </p>
         </div>
-    ''',
-    unsafe_allow_html=True
-)
+        ''',
+        unsafe_allow_html=True
+    )
 
-# Imagem da arquitetura do projeto
-##st.image('img/arquitetura.png', caption='Arquitetura do projeto')
+    # Imagem da arquitetura do projeto
+    # Substitua 'img/arquitetura.png' pelo caminho da imagem se necessário
+    # st.image('img/arquitetura.png', caption='Arquitetura do projeto')

@@ -1,6 +1,6 @@
 # Certifique-se de que `sobreoprojeto.py`, `home.py`, e `sobreonegocio.py` estão no mesmo diretório
 import streamlit as st
-from sobreoprojeto home sobreonegocio import scripts
+import scripts
 
 # Menu lateral com a página "Home" selecionada como padrão
 st.sidebar.title("Menu")

@@ -11,10 +11,10 @@ menu = st.sidebar.radio("Selecione uma página:", ["Home", "Sobre o Negócio", "
 
 # Exibição das páginas
 if menu == "Home":
-    home.show()
+    sobreoprojeto.show()
 
 elif menu == "Sobre o Negócio":
-    sobreonegocio.show()
+    sobreoprojeto.show()
 
 elif menu == "Sobre o Projeto":
     sobreoprojeto.show()

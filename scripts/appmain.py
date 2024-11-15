@@ -9,25 +9,22 @@ menu = st.sidebar.radio("Selecione uma página:", ["Home", "Sobre o Negócio", "
 
 # Exibição das páginas
 if menu == "Home":
-    try:
-        home.show()
-    except AttributeError:
-        st.error("Erro ao carregar a página 'Home'. Verifique se a função `show()` está definida no arquivo `home.py`.")
+    home.show()
+    
 
 elif menu == "Sobre o Negócio":
-    try:
+    
         sobreonegocio.show()
-    except AttributeError:
-        st.error("Erro ao carregar a página 'Sobre o Negócio'. Verifique se a função `show()` está definida no arquivo `sobreonegocio.py`.")
+    
+      
 
 
 
 
 elif menu == "Sobre o Projeto":
-    try:
+   
         sobreoprojeto.show()
-    except AttributeError:
-        st.error("Erro ao carregar a página 'Sobre o Projeto'. Verifique se a função `show()` está definida no arquivo `sobreoprojeto.py`.")
+   
 
 
    

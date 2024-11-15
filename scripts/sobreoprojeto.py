@@ -1,5 +1,6 @@
 import streamlit as st
 
+def show():
 # Layout inicial com imagem no canto direito
 left, cent, right = st.columns(3)
 with right:

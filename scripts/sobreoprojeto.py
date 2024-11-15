@@ -7,7 +7,7 @@ def show():
      st.image('imagens/fiap.png')
 
     # Título do projeto
-    st.title('Sobre o projeto testede lei ')
+    st.title('Sobre o projeto')
   
     st.markdown(
         '''

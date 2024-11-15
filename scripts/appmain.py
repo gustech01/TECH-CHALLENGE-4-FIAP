@@ -1,8 +1,9 @@
   # Certifique-se de que `sobreoprojeto.py` está no mesmo diretório
+import streamlit as st
 import home
 import sobreonegocio
 import sobreoprojeto
-import streamlit as st
+
 
 # Menu lateral
 st.sidebar.title("Menu")

@@ -20,10 +20,10 @@ dados['Date'] = pd.to_datetime(dados['Date'])
 dados = dados[dados['Date'] >= '01/01/2000']
 
 # Verificando se o dataset não está vazio
-if dados.empty:
-    st.error("O dataset de histórico de preços está vazio após o filtro.")
-else:
-    st.write(f"O dataset possui {len(dados)} linhas após o filtro.")
+#if dados.empty:
+#    st.error("O dataset de histórico de preços está vazio após o filtro.")
+#else:
+ #   st.write(f"O dataset possui {len(dados)} linhas após o filtro.")
 
 # Tratando as previsões
 forecast['Date'] = pd.to_datetime(forecast['Date'], format='%Y-%m-%d', errors='coerce')

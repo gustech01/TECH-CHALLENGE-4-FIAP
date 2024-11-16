@@ -24,9 +24,9 @@ def show():
         return
 
     # Exibindo as primeiras linhas para verificar os dados
-    st.write("### Dados Carregados")
-    st.write(dados.head())
-    st.write(forecast.head())
+    #st.write("### Dados Carregados")
+   # st.write(dados.head())
+    #st.write(forecast.head())
 
     # Tratando dados históricos
     dados['Date'] = pd.to_datetime(dados['Date'], errors='coerce')
@@ -56,5 +56,5 @@ def show():
             st.error("A coluna 'Predicted' não foi encontrada no dataset de previsões.")
 
 # Exibir o aplicativo
-if __name__ == "__main__":
-    show()
+#if __name__ == "__main__":
+ #   show()

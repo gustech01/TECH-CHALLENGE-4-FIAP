@@ -5,7 +5,7 @@ def show():
  with right:
    st.image('imagens/fiap.png')
   
-st.title('Sobre o Negócio')
+st.title('Sobre o Negócio tste')
 st.markdown(
         '''
         <div style="text-align: justify;">

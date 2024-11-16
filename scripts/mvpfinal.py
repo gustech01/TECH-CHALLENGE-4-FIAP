@@ -24,7 +24,7 @@ forecast['Date'] = pd.to_datetime(forecast['Date'], format='%Y-%m-%d', errors='c
 # Verificando colunas do dataset de previsões
 st.write("### Visualização do Dataset de Previsões")
 st.write(forecast.head())  # Inspecione os nomes das colunas aqui
-
+ 
 # Gráfico 1: Histórico do petróleo
 if 'Date' in dados.columns:
     st.subheader("Histórico de Preços do Petróleo")

@@ -2,13 +2,14 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
+# Teste para ver se o pandas e plotly funcionam
 def show():
     # Layout inicial com imagem
     left, cent, right = st.columns(3)
     with right:
-        st.image('imagens/fiap.png')
+        st.image('imagens/fiap.png')  # Certifique-se que o caminho para a imagem está correto
 
-    # Leitura dos dados
+    # Leitura dos dados (ajustar os caminhos dos arquivos conforme necessário)
     dados = pd.read_csv("dataset/Europe_Brent_Spot_Price_FOB.csv")
     forecast = pd.read_csv("dataset/xgboost_results.csv")
 
@@ -97,3 +98,6 @@ def show():
             ''',
             unsafe_allow_html=True
         )
+
+if __name__ == '__main__':
+    show()

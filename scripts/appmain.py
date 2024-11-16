@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 # Inicialize variáveis no session_state
 if "current_page" not in st.session_state:
     st.session_state.current_page = "Home"
@@ -25,5 +26,5 @@ elif st.session_state.current_page == "Sobre o Projeto":
     sobreoprojeto.show()
 
 elif st.session_state.current_page == "MVP":
-    import mvp
+    from scripts import mvp
     mvp.show()

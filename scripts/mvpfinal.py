@@ -2,10 +2,24 @@ import streamlit as st
 import pandas as pd
 
 def show():
-# Layout com colunas
+
+ #visualização no streamlit
+
+#logo fiap
  left, cent, right = st.columns(3)
  with right:
-    st.image('imagens/fiap.png')  # Certifique-se de que o caminho para a imagem está correto
+    st.image('imagens/fiap.png')
+
+#título
+#st.title('Petróleo Brent')
+#st.image('img/oil_barrel.png', width=100)
+
+#layout do aplicativo
+tab1, tab2 = st.tabs(['Forecast', 'Histórico'])
+# Layout com colunas
+ #left, cent, right = st.columns(3)
+ #with right:
+    #st.image('imagens/fiap.png')  # Certifique-se de que o caminho para a imagem está correto
 
 # Leitura dos dados
 dados = pd.read_csv("dataset/Europe_Brent_Spot_Price_FOB.csv")

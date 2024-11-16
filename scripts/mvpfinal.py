@@ -32,14 +32,14 @@ st.write("### Visualização do Dataset de Previsões")
 st.write(forecast.head())  # Inspecione os nomes das colunas aqui
  
 # Gráfico 1: Histórico do petróleo
-if 'Price' in dados.columns:
+if 'Value' in dados.columns:
     st.subheader("Histórico de Preços do Petróleo")
     st.line_chart(dados.set_index("Date")["Price"], use_container_width=True)
 else:
     st.error("A coluna 'Price' não foi encontrada no dataset histórico.")
 
 # Gráfico 2: Previsões
-if 'Forecast' in forecast.columns:
+if 'Predicted' in forecast.columns:
     st.subheader("Previsões de Preço")
     st.line_chart(forecast.set_index("Date")["Forecast"], use_container_width=True)
 else:

@@ -14,9 +14,6 @@ def show():
     # Configurando template do plotly
     template = 'ggplot2'
 
-    print(dados)
-    print(forecast)
-
     # Figuras
 
     # Série histórica

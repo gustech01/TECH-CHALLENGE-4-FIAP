@@ -11,11 +11,11 @@ def show():
     st.image('imagens/fiap.png')
 
 #título
-st.title('Petróleo Brent')
-#st.image('img/oil_barrel.png', width=100)
+st.title('MVP Petróleo Brent')
+
 
 #layout do aplicativo
-tab1, tab2 = st.tabs(['Forecast', 'Histórico'])
+tab1, tab2 = st.tabs(['Histórico Preços', 'Forcast'])
 # Layout com colunas
  #left, cent, right = st.columns(3)
  #with right:

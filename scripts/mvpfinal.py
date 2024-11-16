@@ -10,6 +10,10 @@ with right:
 dados = pd.read_csv("dataset/Europe_Brent_Spot_Price_FOB.csv")
 forecast = pd.read_csv("dataset/xgboost_results.csv")
 
+# Exibindo as primeiras linhas para verificar os dados
+st.write("### Visualização do Dataset Histórico")
+st.write(dados.head())  # Inspecione os nomes das colunas aqui
+
 # Tipando coluna de data e filtrando dados
 dados['Date'] = pd.to_datetime(dados['Date'], format='%Y-%m-%d', errors='coerce')
 dados = dados[dados['Date'] >= '2000-01-01']
@@ -17,22 +21,22 @@ dados = dados[dados['Date'] >= '2000-01-01']
 # Tratando as previsões
 forecast['Date'] = pd.to_datetime(forecast['Date'], format='%Y-%m-%d', errors='coerce')
 
-# Layout principal
-st.title("Análise de Preços do Petróleo e Previsões")
-st.write("Este dashboard mostra o histórico de preços do petróleo Brent e as previsões baseadas em modelos.")
+# Verificando colunas do dataset de previsões
+st.write("### Visualização do Dataset de Previsões")
+st.write(forecast.head())  # Inspecione os nomes das colunas aqui
 
 # Gráfico 1: Histórico do petróleo
-st.subheader("Histórico de Preços do Petróleo")
-st.line_chart(dados.rename(columns={"Date": "index"}).set_index("index")["Price"], 
-              use_container_width=True)
+if 'Price' in dados.columns:
+    st.subheader("Histórico de Preços do Petróleo")
+    st.line_chart(dados.rename(columns={"Date": "index"}).set_index("index")["Price"], 
+                  use_container_width=True)
+else:
+    st.error("A coluna 'Price' não foi encontrada no dataset histórico.")
 
 # Gráfico 2: Previsões
-st.subheader("Previsões de Preço")
-st.line_chart(forecast.rename(columns={"Date": "index"}).set_index("index")["Forecast"], 
-              use_container_width=True)
-
-    
-        
-  
-
-
+if 'Forecast' in forecast.columns:
+    st.subheader("Previsões de Preço")
+    st.line_chart(forecast.rename(columns={"Date": "index"}).set_index("index")["Forecast"], 
+                  use_container_width=True)
+else:
+    st.error("A coluna 'Forecast' não foi encontrada no dataset de previsões.")

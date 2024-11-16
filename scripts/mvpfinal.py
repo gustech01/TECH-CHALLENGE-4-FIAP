@@ -18,6 +18,12 @@ st.write(dados.head())  # Inspecione os nomes das colunas aqui
 dados['Date'] = pd.to_datetime(dados['Date'], format='%Y-%m-%d', errors='coerce')
 dados = dados[dados['Date'] >= '2000-01-01']
 
+# Verificando se o dataset não está vazio
+if dados.empty:
+    st.error("O dataset de histórico de preços está vazio após o filtro.")
+else:
+    st.write(f"O dataset possui {len(dados)} linhas após o filtro.")
+
 # Tratando as previsões
 forecast['Date'] = pd.to_datetime(forecast['Date'], format='%Y-%m-%d', errors='coerce')
 
@@ -26,17 +32,15 @@ st.write("### Visualização do Dataset de Previsões")
 st.write(forecast.head())  # Inspecione os nomes das colunas aqui
  
 # Gráfico 1: Histórico do petróleo
-if 'Date' in dados.columns:
+if 'Price' in dados.columns:
     st.subheader("Histórico de Preços do Petróleo")
-    st.line_chart(dados.rename(columns={"Date": "index"}).set_index("index")["Value"], 
-                  use_container_width=True)
+    st.line_chart(dados.set_index("Date")["Price"], use_container_width=True)
 else:
     st.error("A coluna 'Price' não foi encontrada no dataset histórico.")
 
 # Gráfico 2: Previsões
-if 'Predicted' in forecast.columns:
+if 'Forecast' in forecast.columns:
     st.subheader("Previsões de Preço")
-    st.line_chart(forecast.rename(columns={"Date": "index"}).set_index("index")["Predicted"], 
-                  use_container_width=True)
+    st.line_chart(forecast.set_index("Date")["Forecast"], use_container_width=True)
 else:
     st.error("A coluna 'Forecast' não foi encontrada no dataset de previsões.")

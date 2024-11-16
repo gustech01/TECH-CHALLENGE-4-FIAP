@@ -3,9 +3,9 @@ import pandas as pd
 import plotly.express as px
 
 def show():
-    dados = pd.read_csv("dataset\Europe_Brent_Spot_Price_FOB.csv")
-    dados = dados[dados['Date'] >= '01/01/20000']
-    forecast = pd.read_csv("dataset\xgboost_results.csv")
+    dados = pd.read_csv("dataset","Europe_Brent_Spot_Price_FOB.csv")
+    dados = dados[dados['Date'] >= '01-01-2000']
+    forecast = pd.read_csv("dataset","xgboost_results.csv")
 
     # Tipando coluna de data
     dados['Date'] = pd.to_datetime(dados['Date'])

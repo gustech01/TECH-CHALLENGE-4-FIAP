@@ -24,7 +24,7 @@ elif st.session_state.current_page == "Sobre o Projeto":
     sobreoprojeto.show()
 
 elif st.session_state.current_page == "MVP":
-    import sobreoprojeto
-    sobreoprojeto.show()
+    import mvpfinal
+    mvpfinal.show()
 
 

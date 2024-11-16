@@ -48,15 +48,15 @@ forecast['Date'] = pd.to_datetime(forecast['Date'], format='%Y-%m-%d', errors='c
 
 with tab1:
 # Gráfico 1: Histórico do petróleo
-if 'Value' in dados.columns:
+ if 'Value' in dados.columns:
     st.subheader("Histórico de Preços do Petróleo")
     st.line_chart(dados.set_index("Date")["Value"], use_container_width=True)
-else:
+ else:
     st.error("A coluna 'Price' não foi encontrada no dataset histórico.")
 with tab2:
 # Gráfico 2: Previsões
-if 'Predicted' in forecast.columns:
+ if 'Predicted' in forecast.columns:
     st.subheader("Previsões de Preço")
     st.line_chart(forecast.set_index("Date")["Predicted"], use_container_width=True)
-else:
+ else:
     st.error("A coluna 'Forecast' não foi encontrada no dataset de previsões.")

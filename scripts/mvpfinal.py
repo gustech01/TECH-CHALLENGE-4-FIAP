@@ -11,7 +11,7 @@ def show():
     st.image('imagens/fiap.png')
 
 #título
-#st.title('Petróleo Brent')
+st.title('Petróleo Brent')
 #st.image('img/oil_barrel.png', width=100)
 
 #layout do aplicativo

@@ -6,7 +6,7 @@ if "current_page" not in st.session_state:
 
 # Menu lateral
 st.sidebar.title("Menu")
-menu = st.sidebar.radio("Selecione uma página:", ["Home", "Sobre o Negócio", "Sobre o Projeto"])
+menu = st.sidebar.radio("Selecione uma página:", ["Home", "Sobre o Negócio", "Sobre o Projeto","MVP"])
 
 # Atualize o estado da página atual
 st.session_state.current_page = menu
@@ -23,3 +23,7 @@ elif st.session_state.current_page == "Sobre o Negócio":
 elif st.session_state.current_page == "Sobre o Projeto":
     import sobreoprojeto
     sobreoprojeto.show()
+
+elif st.session_state.current_page == "MVP":
+    import MVP2
+    MVP2.show()

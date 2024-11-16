@@ -1,7 +1,4 @@
 import streamlit as st
-import pandas as pd
-import plotly.graph_objects as go  # Usando plotly.graph_objects
-
 # Inicialize variáveis no session_state
 if "current_page" not in st.session_state:
     st.session_state.current_page = "Home"

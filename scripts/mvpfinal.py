@@ -26,7 +26,7 @@ st.write("### Visualização do Dataset de Previsões")
 st.write(forecast.head())  # Inspecione os nomes das colunas aqui
 
 # Gráfico 1: Histórico do petróleo
-if 'Value' in dados.columns:
+if 'Date' in dados.columns:
     st.subheader("Histórico de Preços do Petróleo")
     st.line_chart(dados.rename(columns={"Date": "index"}).set_index("index")["Value"], 
                   use_container_width=True)

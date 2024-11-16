@@ -15,8 +15,8 @@ st.write("### Visualização do Dataset Histórico")
 st.write(dados.head())  # Inspecione os nomes das colunas aqui
 
 # Tipando coluna de data e filtrando dados
-dados['Date'] = pd.to_datetime(dados['Date'], format='%Y-%m-%d', errors='coerce')
-dados = dados[dados['Date'] >= '2000-01-01']
+dados['Date'] = pd.to_datetime(dados['Date'])
+dados = dados[dados['Date'] >= '01/01/2000']
 
 # Verificando se o dataset não está vazio
 if dados.empty:

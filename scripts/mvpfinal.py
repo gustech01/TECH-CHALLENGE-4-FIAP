@@ -15,7 +15,7 @@ st.title('MVP Petróleo Brent')
 
 
 #layout do aplicativo
-tab1, tab2 = st.tabs(['Histórico Preços', 'Forcast'])
+tab1, tab2 = st.tabs(['Histórico', 'Forcast'])
 # Layout com colunas
  #left, cent, right = st.columns(3)
  #with right:

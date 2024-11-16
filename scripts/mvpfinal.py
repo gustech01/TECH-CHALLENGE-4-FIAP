@@ -1,9 +1,10 @@
 import streamlit as st
 import pandas as pd
 
+def show():
 # Layout com colunas
-left, cent, right = st.columns(3)
-with right:
+ left, cent, right = st.columns(3)
+ with right:
     st.image('imagens/fiap.png')  # Certifique-se de que o caminho para a imagem está correto
 
 # Leitura dos dados

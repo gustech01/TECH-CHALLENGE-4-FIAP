@@ -3,6 +3,10 @@ import pandas as pd
 ##import plotly.graph_objects as go  # Usando plotly.graph_objects
 
 def show():
+    
+    left, cent, right = st.columns(3)
+    with right:
+        st.image('imagens/fiap.png')  # Certifique-se que o caminho para a imagem está correto
    
     # Leitura dos dados
     dados = pd.read_csv("dataset/Europe_Brent_Spot_Price_FOB.csv")

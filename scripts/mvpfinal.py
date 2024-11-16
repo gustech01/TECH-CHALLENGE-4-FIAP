@@ -3,7 +3,7 @@ import pandas as pd
 ##import plotly.graph_objects as go  # Usando plotly.graph_objects
 
 left, cent, right = st.columns(3)
- with right:
+with right:
     st.image('imagens/fiap.png')  # Certifique-se que o caminho para a imagem está correto
    
     # Leitura dos dados

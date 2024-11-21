@@ -1,11 +1,10 @@
 import streamlit as st
 
-def show():
-    # Layout inicial com imagem no canto direito
-    left, cent, right = st.columns(3)
-    with right:
-     st.image('imagens/fiap.png')
+@st.cache_resource
+def carregar_imagem():
+    return "imagens/fiap.png"
 
+def show():
     # Título do projeto
     st.title('Sobre o projeto')
   

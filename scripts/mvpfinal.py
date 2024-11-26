@@ -33,7 +33,7 @@ def show():
     st.title('MVP Petróleo Brent')
 
     # Layout do aplicativo
-    tab1, tab2 = st.tabs(['Histórico', 'Forecast'])
+    tab1, tab2 = st.tabs(['Histórico x Forecast', 'Dados Brutos'])
 
     # Leitura dos dados
     dados = carregar_dados("dataset/Europe_Brent_Spot_Price_FOB.csv")
@@ -58,21 +58,25 @@ def show():
         st.error("Colunas 'Date' ou 'Predicted' ausentes no dataset de previsões.")
         return
 
+    # Combinando dados históricos e forecast em um único DataFrame
+    dados_comb = pd.merge(dados, forecast, on='Date', how='outer', suffixes=('_Realizado', '_Forecast'))
+    dados_comb = dados_comb.set_index('Date').sort_index()
+
     with tab1:
-        # Gráfico 1: Histórico do petróleo
-        if not dados.empty:
-            st.subheader("Histórico de Preços do Petróleo")
-            st.line_chart(dados.set_index("Date")["Value"], use_container_width=True)
+        # Gráfico combinado
+        if not dados_comb.empty:
+            st.subheader("Histórico x Forecast de Preços do Petróleo")
+            st.line_chart(dados_comb, use_container_width=True)
         else:
-            st.error("Dados de histórico do petróleo estão vazios após o filtro.")
+            st.error("Os dados combinados estão vazios após o processamento.")
 
     with tab2:
-        # Gráfico 2: Previsões
-        if not forecast.empty:
-            st.subheader("Previsões de Preço")
-            st.line_chart(forecast.set_index("Date")["Predicted"], use_container_width=True)
-        else:
-            st.error("Dados de previsões estão vazios após o processamento.")
+        # Exibindo os dados brutos
+        st.subheader("Dados Históricos")
+        st.dataframe(dados)
+
+        st.subheader("Dados de Previsões")
+        st.dataframe(forecast)
 
 # Exibir o aplicativo
 if __name__ == "__main__":

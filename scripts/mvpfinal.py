@@ -111,8 +111,8 @@ def show():
             
             # Fórmula centralizada
              # Logo FIAP
-            cent = st.columns(1)
-            with right:
+            left, right, cent = st.columns(1)
+            with cent:
                 imagem_2 = carregar_imagem('imagens/formula_black_background.png')
                 if imagem_2:
                     st.image(imagem_2)

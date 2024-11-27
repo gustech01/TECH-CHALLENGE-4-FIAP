@@ -92,8 +92,7 @@ def show():
             
             st.line_chart(dados_filtrados[['Real', 'Predito']], use_container_width=True)
 
-           st.markdown(
-            """
+           st.markdown("""
             <h4>MAPE: <span style='color:darkgreen;'>1,48%</span></h4>
             """,
             unsafe_allow_html=True)

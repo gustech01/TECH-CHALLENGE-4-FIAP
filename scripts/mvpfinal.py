@@ -110,11 +110,11 @@ def show():
             # Fórmula centralizada
             st.markdown(
                 """
-                <div style="text-align: center;">
+                <p style="font-size: 20px;">
                     \\[
                     MAPE = \\frac{1}{n} \\sum_{i=1}^{n} \\left| \\frac{y_i - \\hat{y}_i}{y_i} \\right| \\times 100
                     \\]
-                </div>
+                </p>
                 """,
                 unsafe_allow_html=True
             )

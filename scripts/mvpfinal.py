@@ -89,8 +89,13 @@ def show():
             # Filtrar os dados com base no intervalo selecionado
             dados_filtrados = dados_comb.loc[date_range[0]:date_range[1]]
 
-            # Exibir o gráfico com as linhas de 'Value' e 'α'
+            
             st.line_chart(dados_filtrados[['Real', 'Predito']], use_container_width=True)
+
+            st.markdown(""" 
+            #### MAPE: 1,48%
+            
+            """)
 
             # Texto explicativo
             st.markdown("""

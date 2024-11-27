@@ -96,7 +96,9 @@ def show():
                 <h4>MAPE: <span style='color:darkgreen;'>1,48%</span></h4>
                 """)
           
-)
+
+
+
 
             # Texto explicativo
             st.markdown("""

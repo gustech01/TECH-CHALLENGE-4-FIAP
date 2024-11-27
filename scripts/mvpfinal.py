@@ -66,10 +66,28 @@ def show():
     dados_comb = dados_comb.interpolate(method='linear')
 
     with tab1:
-        # Gráfico combinado
+        # Filtro de datas dinâmico
         if not dados_comb.empty:
             st.subheader("Histórico x Forecast de Preços do Petróleo")
-            st.line_chart(dados_comb, use_container_width=True)
+
+            # Obter o intervalo de datas disponível
+            min_date = dados_comb.index.min().date()
+            max_date = dados_comb.index.max().date()
+
+            # Slider para selecionar o intervalo de datas
+            date_range = st.slider(
+                "Selecione o período:",
+                min_value=min_date,
+                max_value=max_date,
+                value=(min_date, max_date),
+                format="%Y-%m-%d"
+            )
+
+            # Filtrar os dados com base no intervalo selecionado
+            dados_filtrados = dados_comb.loc[date_range[0]:date_range[1]]
+
+            # Exibir o gráfico filtrado
+            st.line_chart(dados_filtrados, use_container_width=True)
         else:
             st.error("Os dados combinados estão vazios após o processamento.")
 

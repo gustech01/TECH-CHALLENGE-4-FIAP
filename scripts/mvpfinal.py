@@ -47,6 +47,7 @@ def show():
     if 'Date' in dados.columns and 'Value' in dados.columns:
         dados['Date'] = pd.to_datetime(dados['Date'], errors='coerce')
         dados = dados[dados['Date'].between('2000-01-01', '2025-12-31')]
+        dados.rename(columns={'Value': 'Realizado'}, inplace=True)
     else:
         st.error("Colunas 'Date' ou 'Value' ausentes no dataset histórico.")
         return
@@ -56,6 +57,7 @@ def show():
         forecast['Date'] = pd.to_datetime(forecast['Date'], errors='coerce')
         # Renomear a coluna 'Predicted' para 'α'
         forecast.rename(columns={'Predicted': 'α'}, inplace=True)
+       
     else:
         st.error("Colunas 'Date' ou 'Predicted' ausentes no dataset de previsões.")
         return

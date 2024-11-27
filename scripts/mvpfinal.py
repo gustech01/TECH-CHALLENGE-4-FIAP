@@ -90,7 +90,7 @@ def show():
             dados_filtrados = dados_comb.loc[date_range[0]:date_range[1]]
 
             # Exibir o gráfico com as linhas de 'Value' e 'α'
-            st.line_chart(dados_filtrados[['Realizado', 'α']], use_container_width=True)
+            st.line_chart(dados_filtrados[['Real', 'Predito']], use_container_width=True)
 
             # Texto explicativo
             st.markdown("""

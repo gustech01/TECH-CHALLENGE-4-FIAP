@@ -110,17 +110,12 @@ def show():
             """)
             
             # Fórmula centralizada
-            st.markdown(
-                """
-                <p style="font-size: 20px;">
-                    \\[
-                    MAPE = \\frac{1}{n} \\sum_{i=1}^{n} \\left| \\frac{y_i - \\hat{y}_i}{y_i} \\right| \\times 100
-                    \\]
-                </p>
-                """,
-                unsafe_allow_html=True
-            )
-            
+             # Logo FIAP
+            left, cent, right = st.columns(3)
+            with right:
+                imagem_2 = carregar_imagem('imagens/formula_black_background.png')
+                if imagem_2:
+                    st.image(imagem_2)
             # Continuação do texto explicativo
             st.write("""
             ### Componentes da Fórmula:

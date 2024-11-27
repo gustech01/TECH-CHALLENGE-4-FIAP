@@ -46,7 +46,7 @@ def show():
     # Tratando dados históricos
     if 'Date' in dados.columns and 'Value' in dados.columns:
         dados['Date'] = pd.to_datetime(dados['Date'], errors='coerce')
-        dados = dados[dados['Date'].between('2000-01-01', '2024-12-31')]
+        dados = dados[dados['Date'].between('2000-01-01', '2025-12-31')]
     else:
         st.error("Colunas 'Date' ou 'Value' ausentes no dataset histórico.")
         return

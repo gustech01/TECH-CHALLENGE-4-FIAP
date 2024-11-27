@@ -88,6 +88,14 @@ def show():
 
             # Exibir o gráfico filtrado
             st.line_chart(dados_filtrados, use_container_width=True)
+            # Texto explicativo
+            st.markdown("""
+            ### Eventos Relevantes:
+            - **2008**: Crise financeira global provocada pelo colapso do mercado imobiliário dos EUA, afetando fortemente o consumo e os preços do petróleo.
+            - **2014**: Queda dos preços devido à superprodução nos EUA e desaceleração da demanda na Europa e Ásia.
+            - **2020**: Redução drástica no consumo devido à pandemia de COVID-19, gerando desequilíbrios significativos entre oferta e demanda.
+            - **2022**: Invasão da Ucrânia pela Rússia, que resultou em sanções econômicas severas à Rússia e causou um aumento abrupto no preço do petróleo Brent, ultrapassando US$ 120 o barril em março.
+            """)
         else:
             st.error("Os dados combinados estão vazios após o processamento.")
 

@@ -90,7 +90,7 @@ def show():
             st.line_chart(dados_filtrados, use_container_width=True)
             # Texto explicativo
             st.markdown("""
-            ### Eventos Relevantes:
+            ### Eventos Históricos:
             - **2008**: Crise financeira global provocada pelo colapso do mercado imobiliário dos EUA, afetando fortemente o consumo e os preços do petróleo.
             - **2014**: Queda dos preços devido à superprodução nos EUA e desaceleração da demanda na Europa e Ásia.
             - **2020**: Redução drástica no consumo devido à pandemia de COVID-19, gerando desequilíbrios significativos entre oferta e demanda.
@@ -99,7 +99,9 @@ def show():
 
            # Texto explicativo
             st.write("""
-            # O que é o MAPE?
+            ### Informações do Modelo
+
+            O modelo utilizou 1000 iterações com um early stop de 50 (para evitar overfitting, caso o valor de erro das iterações subsequentes parasse de cair). O modelo XGBoost apresentou um resultado bem satisfatório, capturando bem a alteração de tendências e sazonalidade dos dados, gerando um MAPE de 1.48%. 
             
             O **MAPE** (Mean Absolute Percentage Error, ou Erro Percentual Absoluto Médio) é uma métrica amplamente utilizada para avaliar a precisão de modelos preditivos.  
             Ele mede a porcentagem média de erro entre os valores reais e os valores previstos, fornecendo uma indicação clara do desempenho do modelo em termos percentuais.

@@ -99,7 +99,7 @@ def show():
 
            # Texto explicativo
             st.write("""
-            ### Informações do Modelo
+            ### Informações do Modelo Xboost:
 
             O modelo utilizou 1000 iterações com um early stop de 50 (para evitar overfitting, caso o valor de erro das iterações subsequentes parasse de cair). O modelo XGBoost apresentou um resultado bem satisfatório, capturando bem a alteração de tendências e sazonalidade dos dados, gerando um MAPE de 1.48%. 
             
@@ -136,6 +136,27 @@ def show():
             
             No contexto de modelos como o XGBoost, ele é frequentemente usado como métrica de avaliação para otimizar o desempenho preditivo.
             """)
+
+        <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>MAPE Formula</title>
+                <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+            </head>
+            <body>
+                <div style="text-align: center; margin-top: 50px;">
+                    <p style="font-size: 24px;">Fórmula do MAPE:</p>
+                    <p style="font-size: 20px;">
+                        \\[
+                        MAPE = \\frac{1}{n} \\sum_{i=1}^{n} \\left| \\frac{y_i - p_i}{y_i} \\right| \\times 100
+                        \\]
+                    </p>
+                </div>
+            </body>
+            </html>
+
         else:
             st.error("Os dados combinados estão vazios após o processamento.")
 

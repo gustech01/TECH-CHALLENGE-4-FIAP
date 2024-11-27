@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import plotly.graph_objects as go
 from pathlib import Path
 
 @st.cache_data(show_spinner=True)
@@ -81,55 +80,58 @@ def show():
                 min_value=min_date,
                 max_value=max_date,
                 value=(min_date, max_date)
+                
             )
 
             # Filtrar os dados com base no intervalo selecionado
             dados_filtrados = dados_comb.loc[date_range[0]:date_range[1]]
 
-            # Criar o gráfico com Plotly
-            fig = go.Figure()
+            # Exibir o gráfico filtrado
+            st.line_chart(dados_filtrados, use_container_width=True)
+            # Texto explicativo
+            st.markdown("""
+            ### Eventos Históricos:
+            - **2008**: Crise financeira global provocada pelo colapso do mercado imobiliário dos EUA, afetando fortemente o consumo e os preços do petróleo.
+            - **2014**: Queda dos preços devido à superprodução nos EUA e desaceleração da demanda na Europa e Ásia.
+            - **2020**: Redução drástica no consumo devido à pandemia de COVID-19, gerando desequilíbrios significativos entre oferta e demanda.
+            - **2022**: Invasão da Ucrânia pela Rússia, que resultou em sanções econômicas severas à Rússia e causou um aumento abrupto no preço do petróleo Brent, ultrapassando US$ 120 o barril em março.
+            """)
 
-            # Linha de valores reais
-            fig.add_trace(go.Scatter(
-                x=dados_filtrados.index,
-                y=dados_filtrados['Value_Realizado'],
-                mode='lines',
-                name='Realizado',
-                line=dict(color='blue', width=2)
-            ))
+           # Texto explicativo
+            st.write("""
+            ### Informações do Modelo Xboost:
 
-            # Linha de valores previstos
-            fig.add_trace(go.Scatter(
-                x=dados_filtrados.index,
-                y=dados_filtrados['Predicted'],
-                mode='lines',
-                name='Forecast',
-                line=dict(color='orange', width=2)
-            ))
-
-            # Área do delta
-            fig.add_trace(go.Scatter(
-                x=dados_filtrados.index.tolist() + dados_filtrados.index[::-1].tolist(),
-                y=dados_filtrados['Value_Realizado'].tolist() + dados_filtrados['Predicted'][::-1].tolist(),
-                fill='toself',
-                fillcolor='rgba(255, 165, 0, 0.2)',  # Cor laranja transparente
-                line=dict(color='rgba(255,255,255,0)'),
-                hoverinfo="skip",
-                showlegend=False
-            ))
-
-            # Configurar layout do gráfico
-            fig.update_layout(
-                title="Realizado x Forecast com Delta",
-                xaxis_title="Data",
-                yaxis_title="Valores",
-                legend_title="Legenda",
-                template="plotly_white",
-                height=600
-            )
-
-            # Exibir o gráfico
-            st.plotly_chart(fig, use_container_width=True)
+            O modelo utilizou 1000 iterações com um early stop de 50 (para evitar overfitting, caso o valor de erro das iterações subsequentes parasse de cair). O modelo XGBoost apresentou um resultado bem satisfatório, capturando bem a alteração de tendências e sazonalidade dos dados, gerando um MAPE de 1.48%. 
+            
+            O **MAPE** (Mean Absolute Percentage Error, ou Erro Percentual Absoluto Médio) é uma métrica amplamente utilizada para avaliar a precisão de modelos preditivos.  
+            Ele mede a porcentagem média de erro entre os valores reais e os valores previstos, fornecendo uma indicação clara do desempenho do modelo em termos percentuais.
+            
+            ### Fórmula do MAPE:
+            """)
+            
+            # Fórmula centralizada
+             # Logo FIAP
+            left, cent, right = st.columns(3)
+            with cent:
+                imagem_2 = carregar_imagem('imagens/formula_black_background.png')
+                if imagem_2:
+                    st.image(imagem_2)
+            # Continuação do texto explicativo
+            st.write("""
+            ### Componentes da Fórmula:
+            
+            - **n**: Total de observações.  
+            - **yᵢ**: Valor real da i-ésima observação.  
+            - **ŷᵢ**: Valor previsto para a i-ésima observação.  
+            - O resultado final é multiplicado por 100 para ser expresso em percentual.
+            
+            ### Importância do MAPE:
+            
+            O MAPE é fácil de interpretar e fornece uma métrica clara e intuitiva. No entanto, é importante lembrar que o MAPE pode ser sensível a valores reais muito próximos de zero, o que pode distorcer os resultados.  
+            
+            No contexto de modelos como o XGBoost, ele é frequentemente usado como métrica de avaliação para otimizar o desempenho preditivo.
+            """)
+       
 
         else:
             st.error("Os dados combinados estão vazios após o processamento.")

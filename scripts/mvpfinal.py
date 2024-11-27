@@ -33,7 +33,7 @@ def show():
     st.title('MVP Petróleo Brent')
 
     # Layout do aplicativo
-    tab1, tab2 = st.tabs(['Realizado x Forecast', 'Dados Brutos'])
+    tab1, tab2 = st.tabs(['Real x Forecast', 'Dados Brutos'])
 
     # Leitura dos dados
     dados = carregar_dados("dataset/Europe_Brent_Spot_Price_FOB.csv")
@@ -47,7 +47,7 @@ def show():
     if 'Date' in dados.columns and 'Value' in dados.columns:
         dados['Date'] = pd.to_datetime(dados['Date'], errors='coerce')
         dados = dados[dados['Date'].between('2000-01-01', '2025-12-31')]
-        dados.rename(columns={'Value': 'Realizado'}, inplace=True)
+        dados.rename(columns={'Value': 'Real'}, inplace=True)
     else:
         st.error("Colunas 'Date' ou 'Value' ausentes no dataset histórico.")
         return
@@ -90,7 +90,7 @@ def show():
             dados_filtrados = dados_comb.loc[date_range[0]:date_range[1]]
 
             # Exibir o gráfico com as linhas de 'Value' e 'α'
-            st.line_chart(dados_filtrados[['Realizado', 'Predito']], use_container_width=True)
+            st.line_chart(dados_filtrados[['Real', 'Predito']], use_container_width=True)
 
             # Texto explicativo
             st.markdown("""

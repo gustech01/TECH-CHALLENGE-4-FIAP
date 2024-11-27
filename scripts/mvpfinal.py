@@ -1,6 +1,3 @@
-
-
-
 import streamlit as st
 import pandas as pd
 from pathlib import Path
@@ -57,12 +54,14 @@ def show():
     # Tratando dados de previsões
     if 'Date' in forecast.columns and 'Predicted' in forecast.columns:
         forecast['Date'] = pd.to_datetime(forecast['Date'], errors='coerce')
+        # Renomear a coluna 'Predicted' para 'α'
+        forecast.rename(columns={'Predicted': 'α'}, inplace=True)
     else:
         st.error("Colunas 'Date' ou 'Predicted' ausentes no dataset de previsões.")
         return
 
     # Combinando dados históricos e forecast em um único DataFrame
-    dados_comb = pd.merge(dados, forecast, on='Date', how='outer', suffixes=('_Realizado', '_Forecast'))
+    dados_comb = pd.merge(dados, forecast[['Date', 'α']], on='Date', how='outer')
     dados_comb = dados_comb.set_index('Date').sort_index()
 
     # Substituir valores NaN por interpolação para evitar problemas no gráfico
@@ -83,14 +82,14 @@ def show():
                 min_value=min_date,
                 max_value=max_date,
                 value=(min_date, max_date)
-                
             )
 
             # Filtrar os dados com base no intervalo selecionado
             dados_filtrados = dados_comb.loc[date_range[0]:date_range[1]]
 
-            # Exibir o gráfico filtrado
-            st.line_chart(dados_filtrados, use_container_width=True)
+            # Exibir o gráfico com as linhas de 'Value' e 'α'
+            st.line_chart(dados_filtrados[['Value', 'α']], use_container_width=True)
+
             # Texto explicativo
             st.markdown("""
             ### Eventos Históricos:
@@ -100,41 +99,32 @@ def show():
             - **2022**: Invasão da Ucrânia pela Rússia, que resultou em sanções econômicas severas à Rússia e causou um aumento abrupto no preço do petróleo Brent, ultrapassando US$ 120 o barril em março.
             """)
 
-           # Texto explicativo
+            # Texto explicativo
             st.write("""
             ### Informações do Modelo Xboost:
-
-            O modelo utilizou 1000 iterações com um early stop de 50 (para evitar overfitting, caso o valor de erro das iterações subsequentes parasse de cair). O modelo XGBoost apresentou um resultado bem satisfatório, capturando bem a alteração de tendências e sazonalidade dos dados, gerando um MAPE de 1.48%. 
-            
-            O **MAPE** (Mean Absolute Percentage Error, ou Erro Percentual Absoluto Médio) é uma métrica amplamente utilizada para avaliar a precisão de modelos preditivos.  
-            Ele mede a porcentagem média de erro entre os valores reais e os valores previstos, fornecendo uma indicação clara do desempenho do modelo em termos percentuais.
-            
+            O modelo utilizou 1000 iterações com um early stop de 50 (para evitar overfitting, caso o valor de erro das iterações subsequentes parasse de cair). O modelo XGBoost apresentou um resultado bem satisfatório, capturando bem a alteração de tendências e sazonalidade dos dados, gerando um MAPE de 1.48%.  
+            O **MAPE** (Mean Absolute Percentage Error, ou Erro Percentual Absoluto Médio) é uma métrica amplamente utilizada para avaliar a precisão de modelos preditivos. Ele mede a porcentagem média de erro entre os valores reais e os valores previstos, fornecendo uma indicação clara do desempenho do modelo em termos percentuais.  
             ### Fórmula do MAPE:
             """)
-            
+
             # Fórmula centralizada
-             # Logo FIAP
             left, cent, right = st.columns(3)
             with cent:
                 imagem_2 = carregar_imagem('imagens/formula_black_background.png')
                 if imagem_2:
                     st.image(imagem_2)
+
             # Continuação do texto explicativo
             st.write("""
             ### Componentes da Fórmula:
-            
-            - **n**: Total de observações.  
-            - **yᵢ**: Valor real da i-ésima observação.  
-            - **ŷᵢ**: Valor previsto para a i-ésima observação.  
+            - **n**: Total de observações.
+            - **yᵢ**: Valor real da i-ésima observação.
+            - **ŷᵢ**: Valor previsto para a i-ésima observação.
             - O resultado final é multiplicado por 100 para ser expresso em percentual.
-            
             ### Importância do MAPE:
-            
-            O MAPE é fácil de interpretar e fornece uma métrica clara e intuitiva. No entanto, é importante lembrar que o MAPE pode ser sensível a valores reais muito próximos de zero, o que pode distorcer os resultados.  
-            
+            O MAPE é fácil de interpretar e fornece uma métrica clara e intuitiva. No entanto, é importante lembrar que o MAPE pode ser sensível a valores reais muito próximos de zero, o que pode distorcer os resultados.
             No contexto de modelos como o XGBoost, ele é frequentemente usado como métrica de avaliação para otimizar o desempenho preditivo.
             """)
-       
 
         else:
             st.error("Os dados combinados estão vazios após o processamento.")

@@ -1,5 +1,3 @@
-novo 22:43
-
 
 import streamlit as st
 import pandas as pd

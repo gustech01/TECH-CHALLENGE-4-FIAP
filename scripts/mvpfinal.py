@@ -1,6 +1,10 @@
+novo 22:43
+
+
 import streamlit as st
 import pandas as pd
 from pathlib import Path
+import matplotlib.pyplot as plt
 
 @st.cache_data(show_spinner=True)
 def carregar_dados(caminho):
@@ -80,14 +84,22 @@ def show():
                 min_value=min_date,
                 max_value=max_date,
                 value=(min_date, max_date)
-                
             )
 
             # Filtrar os dados com base no intervalo selecionado
             dados_filtrados = dados_comb.loc[date_range[0]:date_range[1]]
 
-            # Exibir o gráfico filtrado
-            st.line_chart(dados_filtrados, use_container_width=True)
+            # Plotando as duas linhas
+            fig, ax = plt.subplots(figsize=(10, 6))
+            ax.plot(dados_filtrados.index, dados_filtrados['Value_Realizado'], label='Realizado', color='blue')
+            ax.plot(dados_filtrados.index, dados_filtrados['Predicted_Forecast'], label='α (Forecast)', color='red')
+
+            # Personalizando legendas
+            ax.legend()
+
+            # Exibir o gráfico
+            st.pyplot(fig)
+
             # Texto explicativo
             st.markdown("""
             ### Eventos Históricos:
@@ -97,42 +109,39 @@ def show():
             - **2022**: Invasão da Ucrânia pela Rússia, que resultou em sanções econômicas severas à Rússia e causou um aumento abrupto no preço do petróleo Brent, ultrapassando US$ 120 o barril em março.
             """)
 
-           # Texto explicativo
+            # Texto explicativo sobre o modelo XGBoost
             st.write("""
             ### Informações do Modelo Xboost:
-
-            O modelo utilizou 1000 iterações com um early stop de 50 (para evitar overfitting, caso o valor de erro das iterações subsequentes parasse de cair). O modelo XGBoost apresentou um resultado bem satisfatório, capturando bem a alteração de tendências e sazonalidade dos dados, gerando um MAPE de 1.48%. 
+            O modelo utilizou 1000 iterações com um early stop de 50 (para evitar overfitting, caso o valor de erro das iterações subsequentes parasse de cair). O modelo XGBoost apresentou um resultado bem satisfatório, capturando bem a alteração de tendências e sazonalidade dos dados, gerando um MAPE de 1.48%.
             
             O **MAPE** (Mean Absolute Percentage Error, ou Erro Percentual Absoluto Médio) é uma métrica amplamente utilizada para avaliar a precisão de modelos preditivos.  
             Ele mede a porcentagem média de erro entre os valores reais e os valores previstos, fornecendo uma indicação clara do desempenho do modelo em termos percentuais.
-            
+            """)
+
+            # Fórmula do MAPE
+            st.write("""
             ### Fórmula do MAPE:
             """)
-            
-            # Fórmula centralizada
-             # Logo FIAP
+
+            # Exibindo a fórmula
             left, cent, right = st.columns(3)
             with cent:
                 imagem_2 = carregar_imagem('imagens/formula_black_background.png')
                 if imagem_2:
                     st.image(imagem_2)
+
             # Continuação do texto explicativo
             st.write("""
             ### Componentes da Fórmula:
-            
             - **n**: Total de observações.  
             - **yᵢ**: Valor real da i-ésima observação.  
             - **ŷᵢ**: Valor previsto para a i-ésima observação.  
             - O resultado final é multiplicado por 100 para ser expresso em percentual.
             
             ### Importância do MAPE:
-            
-            O MAPE é fácil de interpretar e fornece uma métrica clara e intuitiva. No entanto, é importante lembrar que o MAPE pode ser sensível a valores reais muito próximos de zero, o que pode distorcer os resultados.  
-            
+            O MAPE é fácil de interpretar e fornece uma métrica clara e intuitiva. No entanto, é importante lembrar que o MAPE pode ser sensível a valores reais muito próximos de zero, o que pode distorcer os resultados.
             No contexto de modelos como o XGBoost, ele é frequentemente usado como métrica de avaliação para otimizar o desempenho preditivo.
             """)
-       
-
         else:
             st.error("Os dados combinados estão vazios após o processamento.")
 

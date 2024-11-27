@@ -98,42 +98,42 @@ def show():
             """)
 
            # Texto explicativo
-st.write("""
-# O que é o MAPE?
-
-O **MAPE** (Mean Absolute Percentage Error, ou Erro Percentual Absoluto Médio) é uma métrica amplamente utilizada para avaliar a precisão de modelos preditivos.  
-Ele mede a porcentagem média de erro entre os valores reais e os valores previstos, fornecendo uma indicação clara do desempenho do modelo em termos percentuais.
-
-### Fórmula do MAPE:
-""")
-
-# Fórmula centralizada
-st.markdown(
-    """
-    <div style="text-align: center;">
-        \\[
-        MAPE = \\frac{1}{n} \\sum_{i=1}^{n} \\left| \\frac{y_i - \\hat{y}_i}{y_i} \\right| \\times 100
-        \\]
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-# Continuação do texto explicativo
-st.write("""
-### Componentes da Fórmula:
-
-- **n**: Total de observações.  
-- **yᵢ**: Valor real da i-ésima observação.  
-- **ŷᵢ**: Valor previsto para a i-ésima observação.  
-- O resultado final é multiplicado por 100 para ser expresso em percentual.
-
-### Importância do MAPE:
-
-O MAPE é fácil de interpretar e fornece uma métrica clara e intuitiva. No entanto, é importante lembrar que o MAPE pode ser sensível a valores reais muito próximos de zero, o que pode distorcer os resultados.  
-
-No contexto de modelos como o XGBoost, ele é frequentemente usado como métrica de avaliação para otimizar o desempenho preditivo.
-""")
+            st.write("""
+            # O que é o MAPE?
+            
+            O **MAPE** (Mean Absolute Percentage Error, ou Erro Percentual Absoluto Médio) é uma métrica amplamente utilizada para avaliar a precisão de modelos preditivos.  
+            Ele mede a porcentagem média de erro entre os valores reais e os valores previstos, fornecendo uma indicação clara do desempenho do modelo em termos percentuais.
+            
+            ### Fórmula do MAPE:
+            """)
+            
+            # Fórmula centralizada
+            st.markdown(
+                """
+                <div style="text-align: center;">
+                    \\[
+                    MAPE = \\frac{1}{n} \\sum_{i=1}^{n} \\left| \\frac{y_i - \\hat{y}_i}{y_i} \\right| \\times 100
+                    \\]
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            
+            # Continuação do texto explicativo
+            st.write("""
+            ### Componentes da Fórmula:
+            
+            - **n**: Total de observações.  
+            - **yᵢ**: Valor real da i-ésima observação.  
+            - **ŷᵢ**: Valor previsto para a i-ésima observação.  
+            - O resultado final é multiplicado por 100 para ser expresso em percentual.
+            
+            ### Importância do MAPE:
+            
+            O MAPE é fácil de interpretar e fornece uma métrica clara e intuitiva. No entanto, é importante lembrar que o MAPE pode ser sensível a valores reais muito próximos de zero, o que pode distorcer os resultados.  
+            
+            No contexto de modelos como o XGBoost, ele é frequentemente usado como métrica de avaliação para otimizar o desempenho preditivo.
+            """)
         else:
             st.error("Os dados combinados estão vazios após o processamento.")
 

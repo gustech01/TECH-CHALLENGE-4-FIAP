@@ -94,7 +94,7 @@ def show():
 
             st.markdown(
             """
-            <h4>MAPE: <span style='color:darkgreen;'>1,48%</span></h4>
+            <h4>MAPE: <span style='color:green;'>1,48%</span></h4>
             """,
             unsafe_allow_html=True
             )       

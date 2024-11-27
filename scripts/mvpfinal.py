@@ -79,8 +79,8 @@ def show():
                 "Selecione o período:",
                 min_value=min_date,
                 max_value=max_date,
-                value=(min_date, max_date),
-                format="%Y-%m-%d"
+                value=(min_date, max_date)
+                
             )
 
             # Filtrar os dados com base no intervalo selecionado

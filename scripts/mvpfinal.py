@@ -33,7 +33,7 @@ def show():
     st.title('MVP Petróleo Brent')
 
     # Layout do aplicativo
-    tab1, tab2 = st.tabs(['Histórico x Forecast', 'Dados Brutos'])
+    tab1, tab2 = st.tabs(['Realizado x Forecast', 'Dados Brutos'])
 
     # Leitura dos dados
     dados = carregar_dados("dataset/Europe_Brent_Spot_Price_FOB.csv")
@@ -68,7 +68,7 @@ def show():
     with tab1:
         # Filtro de datas dinâmico
         if not dados_comb.empty:
-            st.subheader("Histórico x Forecast de Preços do Petróleo")
+            st.subheader("Realizado x Forecast")
 
             # Obter o intervalo de datas disponível
             min_date = dados_comb.index.min().date()
@@ -138,7 +138,7 @@ def show():
 
     with tab2:
         # Exibindo os dados brutos
-        st.subheader("Dados Históricos")
+        st.subheader("Dados Brutos")
         st.dataframe(dados)
 
         st.subheader("Dados de Previsões")

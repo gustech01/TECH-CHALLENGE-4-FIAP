@@ -56,14 +56,14 @@ def show():
     if 'Date' in forecast.columns and 'Predicted' in forecast.columns:
         forecast['Date'] = pd.to_datetime(forecast['Date'], errors='coerce')
         # Renomear a coluna 'Predicted' para 'α'
-        forecast.rename(columns={'Predicted': 'α'}, inplace=True)
+        forecast.rename(columns={'Predicted': 'Predito'}, inplace=True)
        
     else:
         st.error("Colunas 'Date' ou 'Predicted' ausentes no dataset de previsões.")
         return
 
     # Combinando dados históricos e forecast em um único DataFrame
-    dados_comb = pd.merge(dados, forecast[['Date', 'α']], on='Date', how='outer')
+    dados_comb = pd.merge(dados, forecast[['Date', 'Predito']], on='Date', how='outer')
     dados_comb = dados_comb.set_index('Date').sort_index()
 
     # Substituir valores NaN por interpolação para evitar problemas no gráfico
@@ -72,7 +72,7 @@ def show():
     with tab1:
         # Filtro de datas dinâmico
         if not dados_comb.empty:
-            st.subheader("Realizado x Forecast")
+            st.subheader("Real x Predito")
 
             # Obter o intervalo de datas disponível
             min_date = dados_comb.index.min().date()

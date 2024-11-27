@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 from pathlib import Path
 
 @st.cache_data
@@ -64,37 +63,10 @@ def show():
     dados_comb = dados_comb.set_index('Date').sort_index()
 
     with tab1:
-        # Gráfico personalizado usando matplotlib
+        # Gráfico combinado
         if not dados_comb.empty:
             st.subheader("Histórico x Forecast de Preços do Petróleo")
-
-            # Criando o gráfico com matplotlib
-            plt.figure(figsize=(12, 6))
-            plt.plot(
-                dados_comb.index, 
-                dados_comb['Value'], 
-                label="Realizado", 
-                color='blue', 
-                linewidth=2, 
-                alpha=0.8
-            )
-            plt.plot(
-                dados_comb.index, 
-                dados_comb['Predicted'], 
-                label="Forecast", 
-                color='orange', 
-                linewidth=2, 
-                alpha=0.8
-            )
-            plt.title("Preços do Petróleo: Histórico vs Forecast", fontsize=16, weight='bold')
-            plt.xlabel("Ano", fontsize=12)
-            plt.ylabel("Preço (USD)", fontsize=12)
-            plt.legend(loc='upper left', fontsize=12)
-            plt.grid(color='gray', linestyle='--', linewidth=0.5, alpha=0.7)
-            plt.tight_layout()
-
-            # Exibindo o gráfico no Streamlit
-            st.pyplot(plt)
+            st.line_chart(dados_comb, use_container_width=True)
         else:
             st.error("Os dados combinados estão vazios após o processamento.")
 
@@ -109,3 +81,4 @@ def show():
 # Exibir o aplicativo
 if __name__ == "__main__":
     show()
+

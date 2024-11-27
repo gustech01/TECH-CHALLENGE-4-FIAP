@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from pathlib import Path
 
-@st.cache_data
+@st.cache_data(show_spinner=True)
 def carregar_dados(caminho):
     """Carrega um dataset CSV, retorna o DataFrame ou erro."""
     try:
@@ -11,7 +11,7 @@ def carregar_dados(caminho):
         st.error(f"Arquivo não encontrado: {caminho}")
         return pd.DataFrame()
 
-@st.cache_resource
+@st.cache_resource(show_spinner=True)
 def carregar_imagem(caminho):
     """Carrega o caminho da imagem."""
     imagem_path = Path(caminho)
@@ -44,9 +44,9 @@ def show():
         return
 
     # Tratando dados históricos
-   if 'Date' in dados.columns and 'Value' in dados.columns:
-       dados['Date'] = pd.to_datetime(dados['Date'], errors='coerce')
-       dados = dados[dados['Date'].between('2005-01-01', '2025-01-01')]
+    if 'Date' in dados.columns and 'Value' in dados.columns:
+        dados['Date'] = pd.to_datetime(dados['Date'], errors='coerce')
+        dados = dados[dados['Date'].between('2005-01-01', '2025-01-01')]
     else:
         st.error("Colunas 'Date' ou 'Value' ausentes no dataset histórico.")
         return
@@ -61,6 +61,9 @@ def show():
     # Combinando dados históricos e forecast em um único DataFrame
     dados_comb = pd.merge(dados, forecast, on='Date', how='outer', suffixes=('_Realizado', '_Forecast'))
     dados_comb = dados_comb.set_index('Date').sort_index()
+
+    # Substituir valores NaN por interpolação para evitar problemas no gráfico
+    dados_comb = dados_comb.interpolate(method='linear')
 
     with tab1:
         # Gráfico combinado
@@ -81,4 +84,3 @@ def show():
 # Exibir o aplicativo
 if __name__ == "__main__":
     show()
-
